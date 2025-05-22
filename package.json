@@ -1,0 +1,20 @@
+{
+  "name": "members-only",
+  "version": "1.0.0",
+  "description": "An odin project members only app",
+  "homepage": "https://github.com/Meltasy/members-only#readme",
+  "bugs": {
+    "url": "https://github.com/Meltasy/members-only/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meltasy/members-only.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
