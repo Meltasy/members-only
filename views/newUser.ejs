@@ -14,23 +14,70 @@
     <form action="/newUser" method="POST">
       <div>
         <label for="firstName">Name *</label>
-        <input id="firstName" name="firstName" placeholder="Gerald" type="text">
+        <input
+          id="firstName"
+          name="firstName"
+          placeholder="Gerald"
+          type="text"
+          autocomplete="off"
+          minlength="3"
+          maxlength="30"
+          title="Name must be between 3 and 30 characters."
+          required
+          autofocus
+        />
       </div>
       <div>
         <label for="lastName">Surname *</label>
-        <input id="lastName" name="lastName" placeholder="Durrell" type="text">
+        <input
+          id="lastName"
+          name="lastName"
+          placeholder="Durrell"
+          type="text"
+          autocomplete="off"
+          minlength="3"
+          maxlength="30"
+          title="Surname must be between 3 and 30 characters."
+          required
+        />
       </div>
       <div>
         <label for="username">Username *</label>
-        <input id="username" name="username" placeholder="gerald.durrell@durrell.org" type="text">
+        <input
+          id="username"
+          name="username"
+          placeholder="gerald.durrell@durrell.org"
+          type="email"
+          autocomplete="off"
+          minlength="3"
+          maxlength="60"
+          title="Email must be between 3 and 60 characters."
+          required
+        />
       </div>
       <div>
         <label for="password">Password *</label>
-        <input id="password" name="password" type="text">
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="off"
+          pattern="^(?=.*\d])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,24}$"
+          title="Password must contain one number, one lowercase letter, one uppercase letter, one special character, no spaces, and be more than 8 characters long."
+          required
+        />
       </div>
+      <!-- Need to add client-side check to see if passowrds match using javascript, then remove the pattern as it isn't necessary here. -->
       <div>
         <label for="confirmPassword">Confirm password *</label>
-        <input id="confirmPassword" name="confirmPassword" type="text">
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          autocomplete="off"
+          pattern="^(?=.*\d])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$"
+          required
+        />
       </div>
       <div>
         <button type="submit">Sign up</button>

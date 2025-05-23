@@ -2,7 +2,10 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const path = require('node:path')
+// const session = require('express-session')
+const passport = require('./authentication/passport')
 const assetsPath = path.join(__dirname, 'public')
+const CustomError = require('./errors/CustomError')
 
 // Will need to install and use method-override to use DELETE, PUT and PATCH where these aren't supported.
 
@@ -21,9 +24,19 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/', homeRouter)
 
+app.use(passport.session())
+
 // This catches any last moment errors, so must go at the bottom of this file
 app.use((err, req, res, next) => {
   console.error(err)
+
+  if (err instanceof CustomError) {
+    return res.status(err.statusCode).render('error', {
+      message: err.message,
+      error: process.env.NODE_ENV === 'development' ? err : null
+    })
+  }
+
   res.status(err.statusCode || 500).render('error', {
     message: err.message || 'Something broke!',
     error: process.env.NODE_ENV === 'development' ? err : null
@@ -33,5 +46,5 @@ app.use((err, req, res, next) => {
 // Railway: Do I need to add '|| 8080' or does it come as an automatic variable?
 // This normally goes at the end, but you can place it anywhere in this file
 app.listen(process.env.PORT, '0.0.0.0', () => {
-  console.log(`Members only app - listening on port ${PORT}`)
+  console.log(`Members only app - listening on port ${process.env.PORT}`)
 })

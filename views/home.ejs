@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <header>
+    <h1><%= title %></h1>
+  </header>
+  <main>
+    <% messages.forEach((message) => { %>
+      <div>
+        <p>From: <%= message.user_id %></p>
+        <p>Title: <%= message.title %></p>
+        <p>Message: <%= message.message %></p>
+        <p>Sent:
+          <%= message.added.toString().split(' ').slice(0, 3).join(' ') %>
+          <%= message.added.toString().split(' ').slice(4, 5).join(' ') %>
+        </p><br>
+        <p>
+          <%= new Date(message.added).toString().split(' ').slice(0, 3).join(' ') %>
+          <%= new Date(message.added).toString().split(' ').slice(4, 5).join(' ') %>
+        </p>
+      </div>
+    <% }) %>
+  </main>
+</body>
+</html>
