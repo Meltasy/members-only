@@ -2,29 +2,40 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const path = require('node:path')
-// const session = require('express-session')
+const session = require('express-session')
 const passport = require('./authentication/passport')
-const assetsPath = path.join(__dirname, 'public')
 const CustomError = require('./errors/CustomError')
-
-// Will need to install and use method-override to use DELETE, PUT and PATCH where these aren't supported.
 
 const homeRouter = require('./routes/homeRouter')
 
-// Middleware = methods, functions, operations called between processing the request and sending the response
+// Will need to install and use method-override to use DELETE, PUT and PATCH where these aren't supported.
 
-// Allows you to create ejs files in the views folder and use them in your app without further mention
+// Handle static assets
+const assetsPath = path.join(__dirname, 'public')
+app.use(express.static(assetsPath))
+
+// EJS templating
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-// Used for serving static files, e.g. CSS files, javascript files, image files
-app.use(express.static(assetsPath))
 // Used for POST and PUT requests only (not GET and DELETE) to send data and recognises objects as strings or arrays
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/', homeRouter)
-
+// App middleware = methods, functions, operations called between processing the request and sending the response
+// Change secret to process.env.SECRET once up and running
+app.use(session({
+  secret: 'cats',
+  resave: false,
+  saveUninitialized: false
+}))
 app.use(passport.session())
+// User available in all views
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user
+  next()
+})
+
+app.use('/', homeRouter)
 
 // This catches any last moment errors, so must go at the bottom of this file
 app.use((err, req, res, next) => {

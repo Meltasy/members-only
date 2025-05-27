@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <nav>
+    <div>
+      <% if (!locals.user) { %>
+        <a href="/new-user">Sign up</a>
+      <% } %>
+    </div>
+    <div>
+      <a href="/log-in">Log in</a>
+    </div>
+    <div>
+      <% if (locals.user && !locals.user.member) { %>
+        <a href="/membership">Become a member</a>
+      <% } %>
+    </div>
+    <div>
+      <% if (locals.user) { %>
+        <a href="/log-out">Log Out</a>
+      <% } %>
+    </div>
+  </nav>
+</body>
+</html>

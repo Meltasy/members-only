@@ -7,20 +7,22 @@
   <title><%= title %></title>
 </head>
 <body>
+  <%- include('./navbar')
   <header>
     <h1><%= title %></h1>
   </header>
   <main>
+    <% if (locals.user) { %>
+      <h2>Welcome back <%= user.full_name %></h2>
+    <% } else { %>
+      <h2>Please sign up or log in to see more details.</h2>
+    <% } %>
     <% messages.forEach((message) => { %>
       <div>
-        <p>From: <%= message.user_id %></p>
+        <p>From: <%= message.full_name %></p>
         <p>Title: <%= message.title %></p>
         <p>Message: <%= message.message %></p>
         <p>Sent:
-          <%= message.added.toString().split(' ').slice(0, 3).join(' ') %>
-          <%= message.added.toString().split(' ').slice(4, 5).join(' ') %>
-        </p><br>
-        <p>
           <%= new Date(message.added).toString().split(' ').slice(0, 3).join(' ') %>
           <%= new Date(message.added).toString().split(' ').slice(4, 5).join(' ') %>
         </p>

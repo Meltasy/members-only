@@ -7,7 +7,8 @@ async function getMessages(req, res) {
   const messages = await db.getAllMessages()
 
   res.render('home', {
-    title: '',
+    user: req.user,
+    title: 'Message Board',
     messages: messages
   })
 }
@@ -28,12 +29,51 @@ async function createUserPost(req, res, next) {
     await db.insertUser(firstName, lastName, username, password)
     res.redirect('/')
   } catch (err) {
-    next(err)
+    return next(err)
+  }
+}
+
+function logInUser(req, res) {
+  res.render('logIn', {
+    title: 'Log In'
+  })
+}
+
+function logOutUser(req, res, next) {
+  req.logout((err) => {
+    if (err) {
+      return next(err)
+    }
+    res.redirect('/')
+  })
+}
+
+function updateMemberGet(req, res) {
+  res.render('membership', {
+    title: 'Membership',
+    message: ''
+  })
+}
+
+async function updateMemberPost(req, res, next) {
+  if (req.body.passcode === process.env.MEMBERSHIP) {
+    const user = req.user
+    await db.makeMember(user.user_id)
+    res.redirect('/')
+  } else {
+    res.render('membership', {
+      title: 'Membership',
+      message: 'The membership passcode is incorrect.'
+    })
   }
 }
 
 module.exports = {
   getMessages,
   createUserGet,
-  createUserPost
+  createUserPost,
+  logInUser,
+  logOutUser,
+  updateMemberGet,
+  updateMemberPost
 }

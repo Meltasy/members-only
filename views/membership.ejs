@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include('./navbar')
+  <header>
+    <h1><%= title %></h1>
+  </header>
+  <main>
+    <p><%= message %></p>
+    <form action="/membership" method="POST">
+      <div>
+        <label for="passcode">Enter the secret passcode to become a member:</label>
+        <input
+          id="passcode"
+          name="passcode"
+          type="password"
+          autocomplete="off"
+          autofocus
+          required
+        />
+      </div>
+      <div>
+        <button type="submit">I want to become a member!</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
