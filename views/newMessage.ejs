@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title><%= title %>></title>
+</head>
+<body>
+  <%- include('./navbar') %>
+  <header>
+    <h1><%= title %></h1>
+  </header>
+  <main>
+    <% if (locals.user) { %>
+      <h2>Would you like to write a message, <%= user.full_name %> ?</h2>
+    <% } %>
+    <form action="/new-message" method="POST" class="message">
+      <label for="title">Title *</label>
+      <input
+        id="title"
+        name="title"
+        placeholder="Give it a title ..."
+        type="text"
+        autocomplete="off"
+        minlength="3"
+         maxlength="60"
+        title="Title must be between 3 and 60 characters."
+        required
+        autofocus
+      />
+      <label for="message">Message *</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Write your message here ..."
+        autocomplete="off"
+        minlength="3"
+        maxlength="250"
+        title="Message must be between 3 and 250 characters."
+        rows="5"
+        cols="50"
+        required
+      ></textarea>
+      <div class="button">
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

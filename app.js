@@ -6,9 +6,8 @@ const session = require('express-session')
 const passport = require('./authentication/passport')
 const CustomError = require('./errors/CustomError')
 
-const homeRouter = require('./routes/homeRouter')
-
-// Will need to install and use method-override to use DELETE, PUT and PATCH where these aren't supported.
+const messageRouter = require('./routes/messageRouter')
+const userRouter = require('./routes/userRouter')
 
 // Handle static assets
 const assetsPath = path.join(__dirname, 'public')
@@ -18,13 +17,12 @@ app.use(express.static(assetsPath))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-// Used for POST and PUT requests only (not GET and DELETE) to send data and recognises objects as strings or arrays
+// Used for POST and PUT requests only (not GET and DELETE)
 app.use(express.urlencoded({ extended: true }))
 
-// App middleware = methods, functions, operations called between processing the request and sending the response
-// Change secret to process.env.SECRET once up and running
+// App middleware
 app.use(session({
-  secret: 'cats',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }))
@@ -35,9 +33,10 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/', homeRouter)
+app.use('/', messageRouter)
+app.use('/user', userRouter)
 
-// This catches any last moment errors, so must go at the bottom of this file
+// Catches any final errors - must stay at end
 app.use((err, req, res, next) => {
   console.error(err)
 
@@ -55,7 +54,7 @@ app.use((err, req, res, next) => {
 })
 
 // Railway: Do I need to add '|| 8080' or does it come as an automatic variable?
-// This normally goes at the end, but you can place it anywhere in this file
+// Normally at end - but can sit anywhere
 app.listen(process.env.PORT, '0.0.0.0', () => {
   console.log(`Members only app - listening on port ${process.env.PORT}`)
 })

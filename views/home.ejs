@@ -7,7 +7,7 @@
   <title><%= title %></title>
 </head>
 <body>
-  <%- include('./navbar')
+  <%- include('./navbar') %>
   <header>
     <h1><%= title %></h1>
   </header>
@@ -17,17 +17,33 @@
     <% } else { %>
       <h2>Please sign up or log in to see more details.</h2>
     <% } %>
-    <% messages.forEach((message) => { %>
-      <div>
-        <p>From: <%= message.full_name %></p>
-        <p>Title: <%= message.title %></p>
-        <p>Message: <%= message.message %></p>
-        <p>Sent:
-          <%= new Date(message.added).toString().split(' ').slice(0, 3).join(' ') %>
-          <%= new Date(message.added).toString().split(' ').slice(4, 5).join(' ') %>
-        </p>
-      </div>
-    <% }) %>
+    <section>
+      <% messages.forEach((message) => { %>
+        <div>
+          <p>Title: <%= message.title %></p>
+          <p>Message: <%= message.message %></p>
+          <div class="extras">
+            <div>
+              <% if (locals.user && locals.user.member) { %>
+                <p>From: <%= message.full_name %></p>
+                <p>Sent:
+                  <%= new Date(message.added).toString().split(' ').slice(0, 3).join(' ') %>
+                  <%= new Date(message.added).toString().split(' ').slice(4, 5).join(' ') %>
+                </p>
+              <% } %>
+            </div>
+            <% if (locals.user && locals.user.admin) { %>
+              <div>
+                <form action="/delete" method="POST">
+                  <input name="messageId" value="<%= message.message_id %>" type="hidden">
+                  <button type="submit">Delete</button>
+                </form>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    </section>
   </main>
 </body>
 </html>

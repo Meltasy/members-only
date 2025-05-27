@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/confirmPword.js" defer></script>
   <title><%= title %></title>
 </head>
 <body>
-  <%- include('./navbar')
+  <%- include('./navbar')  %>
   <header>
     <h1><%= title %></h1>
   </header>
   <main>
-    <form action="/new-user" method="POST">
+    <form action="/user/new-user" method="POST">
       <div>
         <label for="firstName">Name *</label>
         <input
@@ -68,7 +69,6 @@
           required
         />
       </div>
-      <!-- Need to add client-side check to see if passowrds match using javascript, then remove the pattern as it isn't necessary here. -->
       <div>
         <label for="confirmPassword">Confirm password *</label>
         <input
@@ -76,11 +76,11 @@
           name="confirmPassword"
           type="password"
           autocomplete="off"
-          pattern="^(?=.*\d])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$"
+          pattern="^(?=.*\d])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,24}$"
           required
         />
       </div>
-      <div>
+      <div class="button">
         <button type="submit">Sign up</button>
       </div>
     </form>

@@ -27,7 +27,7 @@ const userList = [
   { username: 'joe.bloggs@gmail.com', password: 'JBloggs1979£$', firstName: 'Joe', lastName: 'Bloggs', member: true, admin: true, title: 'Hello!', message: 'My name is Joe Bloggs and I\'m a made-up person.' },
   { username: 'sarah.smith@hotmail.com', password: 'SassyS&M69', firstName: 'Sarah', lastName: 'Smith', member: false, admin: false, title: 'Oh my darling!', message: 'My name is Sassy Sarah and I\'m a sexy lady.' },
   { username: 'mr.white@tarantino.org', password: 'WhiteISBlack*8*', firstName: 'Mister', lastName: 'White', member: false, admin: false, title: 'Don\'t move!', message: 'You don\'t know me and I don\'t know you.' },
-  { username: 'tantwaneng@writers.org', password: 'Garden3v3ning^^ists', firstName: 'Tan Twan', lastName: 'Eng', member: false, admin: false, title: 'The end', message: 'He walked into the jungle, never to be seen again.' },
+  { username: 'tantwaneng@writers.org', password: 'Garden3v3ning^^ists', firstName: 'Tan Twan', lastName: 'Eng', member: true, admin: true, title: 'The end', message: 'He walked into the jungle, never to be seen again.' },
   { username: 'lamajiao@pm.me', password: 'FREE888:-)now', firstName: 'La Ma', lastName: 'Jiao', member: false, admin: false, title: 'Driver', message: 'Where do you want to go? Let\'s head into the mountains.' },
   { username: 'andy.dufresne@outlook.com', password: 'HopeIS****1966', firstName: 'Andy', lastName: 'Dufresne', member: false, admin: false, title: 'Let me go!', message: 'Some birds weren\'t meant to be caged!' }
 ]

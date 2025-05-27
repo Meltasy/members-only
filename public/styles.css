@@ -1,0 +1,147 @@
+:root {
+  --text-color: rgb(255, 223, 212);
+  --background-color: rgb(28, 7, 0);
+  --primary-color: rgb(174, 87, 60);
+  --primary-color-light: rgb(246, 169, 145);
+  --primary-color-dark: rgb(102, 32, 10);
+  --secondary-color: rgb(42, 122, 81);
+  --secondary-color-light: rgb(102, 173, 137);
+  --secondary-color-dark: rgb(7, 71, 38);
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  width: 80%;
+  margin: auto;
+}
+
+p {
+  margin: 0.5rem;
+}
+
+nav {
+  text-align: center;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-around;
+}
+
+nav > div {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2rem 0;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+main {
+  text-align: center;
+}
+
+main section {
+  font-size: 1.2rem;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+main section > div {
+  background-color: var(--primary-color);
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.extras {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+form {
+  background-color: var(--secondary-color);
+  width: max-content;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.message {
+  align-items: flex-start;
+}
+
+.extras form {
+  background-color: var(--primary-color);
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  background-color: var(--secondary-color-dark);
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.message div {
+  width: 100%;
+}
+
+.message input {
+  width: 97%;
+}
+
+label,
+button {
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.button {
+  align-self: center;
+}
+
+button {
+  color: var(--text-color);
+  background-color: var(--secondary-color-dark);
+  border: none;
+  outline: none;
+  padding: 15px 30px;
+}
+
+button:hover {
+  color: var(--background-color);
+  background-color: var(--secondary-color-light);
+}
+
+.extras button {
+  background-color: var(--primary-color-dark);
+}
+
+.extras button:hover {
+  color: var(--background-color);
+  background-color: var(--primary-color-light);
+}
+
+a {
+  color: var(--text-color);
+  padding: 15px 30px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: var(--primary-color-dark);
+}
