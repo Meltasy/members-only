@@ -1,12 +1,12 @@
 :root {
-  --text-color: rgb(170, 242, 228);
-  --background-color: rgb(0, 9, 7);
-  --primary-color: rgb(39, 111, 97);
-  --primary-color-light: rgb(84, 161, 146);
-  --primary-color-dark: rgb(10, 61, 51);
-  --secondary-color: rgb(174, 105, 60);
-  --secondary-color-light: rgb(252, 179, 132);
-  --secondary-color-dark: rgb(95, 47, 16);
+  --text-color: rgb(255, 248, 230);
+  --background-color: rgb(24, 17, 0);
+  --primary-color: rgb(174, 141, 60);
+  --primary-color-light: rgb(248, 221, 155);
+  --primary-color-dark: rgb(100, 72, 7);
+  --secondary-color: rgb(174, 92, 60);
+  --secondary-color-light: rgb(248, 181, 155);
+  --secondary-color-dark: rgb(100, 33, 7);
 }
 
 body {

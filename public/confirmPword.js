@@ -7,7 +7,6 @@ errorMessage.style.color = 'darkred'
 errorMessage.style.fontSize = '16px'
 errorMessage.style.fontWeight = '700'
 errorMessage.style.marginTop = '5px'
-errorMessage.style.marginRight = '20px'
 errorMessage.style.textAlign = 'right'
 errorMessage.style.display = 'none'
 confirmPasswordInput.parentNode.appendChild(errorMessage)
