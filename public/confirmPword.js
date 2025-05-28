@@ -1,7 +1,6 @@
 const form = document.querySelector('form')
 const passwordInput = document.querySelector('#password')
 const confirmPasswordInput = document.querySelector('#confirmPassword')
-const submitButton = document.querySelector('button[type="submit"]')
 
 const errorMessage = document.createElement('div')
 errorMessage.style.color = 'darkred'

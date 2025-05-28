@@ -13,7 +13,7 @@
   </header>
   <main>
     <% if (locals.user) { %>
-      <h2>Would you like to write a message, <%= user.full_name %> ?</h2>
+      <h2>Would you like to write a message, <%= user.full_name %>?</h2>
     <% } %>
     <form action="/new-message" method="POST" class="message">
       <label for="title">Title *</label>

@@ -1,12 +1,12 @@
 :root {
-  --text-color: rgb(255, 223, 212);
-  --background-color: rgb(28, 7, 0);
-  --primary-color: rgb(174, 87, 60);
-  --primary-color-light: rgb(246, 169, 145);
-  --primary-color-dark: rgb(102, 32, 10);
-  --secondary-color: rgb(42, 122, 81);
-  --secondary-color-light: rgb(102, 173, 137);
-  --secondary-color-dark: rgb(7, 71, 38);
+  --text-color: rgb(170, 242, 228);
+  --background-color: rgb(0, 9, 7);
+  --primary-color: rgb(39, 111, 97);
+  --primary-color-light: rgb(84, 161, 146);
+  --primary-color-dark: rgb(10, 61, 51);
+  --secondary-color: rgb(174, 105, 60);
+  --secondary-color-light: rgb(252, 179, 132);
+  --secondary-color-dark: rgb(95, 47, 16);
 }
 
 body {
@@ -93,6 +93,7 @@ textarea {
   border: none;
   outline: none;
   padding: 0.5rem;
+  min-width: 300px;
 }
 
 .message div {

@@ -17,7 +17,7 @@ app.use(express.static(assetsPath))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-// Used for POST and PUT requests only (not GET and DELETE)
+// Used for POST and PUT requests only
 app.use(express.urlencoded({ extended: true }))
 
 // App middleware
@@ -27,6 +27,7 @@ app.use(session({
   saveUninitialized: false
 }))
 app.use(passport.session())
+
 // User available in all views
 app.use((req, res, next) => {
   res.locals.currentUser = req.user
@@ -36,7 +37,7 @@ app.use((req, res, next) => {
 app.use('/', messageRouter)
 app.use('/user', userRouter)
 
-// Catches any final errors - must stay at end
+// Catches any final errors - must be at end
 app.use((err, req, res, next) => {
   console.error(err)
 
@@ -53,7 +54,6 @@ app.use((err, req, res, next) => {
   })
 })
 
-// Railway: Do I need to add '|| 8080' or does it come as an automatic variable?
 // Normally at end - but can sit anywhere
 app.listen(process.env.PORT, '0.0.0.0', () => {
   console.log(`Members only app - listening on port ${process.env.PORT}`)

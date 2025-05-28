@@ -2,6 +2,7 @@ const { Router } = require('express')
 const messageRouter = Router()
 const messageController = require('../controllers/messageController')
 const passport = require('../authentication/passport')
+const { validateNewMessage } = require('../validations/messageValidation')
 
 messageRouter.get('/', messageController.getMessages)
 
@@ -13,7 +14,7 @@ messageRouter.post('/log-in', passport.authenticate('local', {
 messageRouter.get('/log-out', messageController.logOutUser)
 
 messageRouter.get('/new-message', messageController.newMessageGet)
-messageRouter.post('/new-message', messageController.newMessagePost)
+messageRouter.post('/new-message', validateNewMessage, messageController.newMessagePost)
 
 messageRouter.post('/delete', messageController.deleteMessage)
 

@@ -16,7 +16,7 @@ async function createUserPost(req, res, next) {
     }
     const { firstName, lastName, username, password } = req.body
     await db.insertUser(firstName, lastName, username, password)
-    res.redirect('/')
+    res.redirect('/log-in')
   } catch (err) {
     return next(err)
   }
