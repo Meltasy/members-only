@@ -35,7 +35,7 @@ const userList = [
 async function main() {
   console.log('Creating tables ...')
   const client = new Client({
-    connectionString: process.env.CONNECTION_STRING
+    connectionString: process.env.DATABASE_PUBLIC_URL
   })
   await client.connect()
   await client.query(SQL)
