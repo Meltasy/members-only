@@ -18,7 +18,7 @@ const validateNewUser = [
   body('username')
     .notEmpty().withMessage(`Email ${reqErr}`)
     .isEmail().withMessage('This is not a valid email address.')
-    .isLength({ min: 3, max: 100 }).withMessage('Email must be between 3 and 100 characters.')
+    .isLength({ min: 6, max: 60 }).withMessage('Email must be between 6 and 60 characters.')
     .normalizeEmail({ gmail_remove_dots: false }),
   body('password')
     .trim()
