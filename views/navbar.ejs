@@ -9,16 +9,16 @@
     <div>
       <a href="/">Home</a>
     </div>
-    <div>
-      <% if (locals.user && !locals.user.member) { %>
+    <% if (locals.user && !locals.user.member) { %>
+      <div>
         <a href="/user/membership">Become a member</a>
-      <% } %>
-    </div>
-    <div>
-      <% if (locals.user && locals.user.member && !locals.user.admin) { %>
+      </div>
+    <% } %>
+    <% if (locals.user && locals.user.member && !locals.user.admin) { %>
+      <div>
         <a href="/user/admin">Add admin rights</a>
-      <% } %>
-    </div>
+      </div>
+    <% } %>
     <% if (!locals.user) { %>
       <div>
         <a href="/user/new-user">Sign up</a>

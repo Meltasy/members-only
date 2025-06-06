@@ -2,7 +2,7 @@ const db = require('../db/queries')
 const CustomError = require('../errors/CustomError')
 const { validationResult } = require('express-validator')
 
-async function getMessages(req, res) {
+async function getMessages(req, res, next) {
   try {
     const messages = await db.getAllMessages()
     res.render('home', {
